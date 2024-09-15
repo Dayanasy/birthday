@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: 'Courier New', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #A2D5F2; /* Soft blue and cream */
+            position: relative;
+        }
+        .card {
+            text-align: center;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        h1 {
+            color: #000000; /* Soft pink for the title */
+            font-size: 2.5rem;
+        }
+        .long-wish {
+            display: none;
+            font-family: 'Georgia', serif; /* Elegant font for the long wish */
+            font-size: 18px;
+            color: #333;
+            margin-top: 15px;
+        }
+        button {
+            padding: 12px 25px;
+            background-color: #FFB6C1; /* Soft pink for the button */
+            color: #000000;
+            border: none;
+            border-radius: 0%;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #FF91A4; /* Darker pink on hover */
+        }
+		.heart-icon {
+            margin-left: 8px;
+            font-size: 1.2rem; /* Adjust the size of the heart */
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .confetti div {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #FFB6C1; /* Soft pink hearts */
+            border-radius: 50%;
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+
+<body>	
+<div class="card">
+    <h1>Happy Birthday bb! </h1>
+	<div class="confetti" id="confetti"></div>
+	
+    <button onclick="showWish()">Baca Sini </button>
+		<p class="long-wish" id="longWish">Selamat hari lahir yang ke 23 baby ❤ !! dah tambah setahun lagi umur yayy <br /><br />
+
+		Tahun ni tahun yang ke 6 kita nak sambut birthday sama-sama, jadi wish kali ni extra sikit hehe. <br /><br />
+
+		Thankyou bb sebab membesar jadi orang yang baik, walaupun sayang tahu banyak yang hubby simpan sendiri dari kecik sampai sekarang. Sayang always always and sangat proud of you. <br /><br />
+
+		Thankyou jugak sebab sayang tahu hubby selalu sabar dengan sayang and orang sekeliling. Semoga hubby terus jadi anak, cucu, abang, dan lelaki yang baik, yang penuh rasa kasih dan tanggungjawab dalam diri dan hati. <br /><br />
+
+		Moga hubby murah rezeki, dipanjangkan umur dan diberikan kesihatan yang baik. Semoga juga seiring bertambah umur, semakin bertambah matang dan sabarnya hehe. Sayang doa Allah jaga hubby dan mudahkan setiap langkah hubby, kat mana pun hubby ada dan dengan siapa. Sayang always support and proud of you. Moga yang baik baik untuk kita. Sayang mintak maaf untuk semua salah kita sebelum ni. I love you and happy 23 baby 🤍
+		💙</p>
+</div>
+
+<!-- Adding the Audio -->
+<audio id="birthdaySong" loop>
+  <source src="Sempurna.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+    function showWish() {
+        const wish = document.getElementById('longWish');
+        wish.style.display = 'block';
+		
+		// Play the music
+        const song = document.getElementById('birthdaySong');
+        song.play();
+
+        // Adjust the confetti container to fit the new document height
+        adjustConfettiHeight();
+    }
+	
+    function adjustConfettiHeight() {
+        const confettiContainer = document.getElementById('confetti');
+        confettiContainer.style.height = document.body.scrollHeight + 'px';
+    }
+
+    // Heart-shaped confetti
+    const confettiContainer = document.getElementById('confetti');
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+        confettiContainer.appendChild(confetti);
+    }
+	
+	// Adjust the confetti height when the page loads
+    window.onload = adjustConfettiHeight;
+
+    // Play/Pause Music
+    const song = document.getElementById("birthdaySong");
+    const musicButton = document.getElementById("musicButton");
+    let isPlaying = false;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            song.pause();
+            musicButton.textContent = "Play Music 🎶";
+        } else {
+            song.play();
+            musicButton.textContent = "Pause Music 🎶";
+        }
+        isPlaying = !isPlaying;
+    }
+</script>
+
+</body>
+</html>
